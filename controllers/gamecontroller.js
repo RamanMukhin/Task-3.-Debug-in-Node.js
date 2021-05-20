@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 var gameModel = require('../models/game');
 var Game = gameModel(db, Sequelize.DataTypes);
 router.get('/all', (req, res) => {
-    Game.findAll({ where: { owner_id: req.user.id } })
+    Game.findAll({ where: { owner_id: req.query.userId } })
         .then(
             function findSuccess(games) {
                 res.status(200).json({
