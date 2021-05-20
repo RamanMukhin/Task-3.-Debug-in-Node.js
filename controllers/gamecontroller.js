@@ -91,7 +91,6 @@ router.put('/update/:id', (req, res) => {
 })
 
 router.delete('/remove/:id', (req, res) => {
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     Game.destroy({
         where: {
             id: req.params.id,
