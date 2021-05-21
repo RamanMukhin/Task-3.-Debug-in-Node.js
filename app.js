@@ -1,15 +1,15 @@
-var express = require('express');
-var app = express();
-var db = require('./db');
-var user = require('./controllers/usercontroller');
-var game = require('./controllers/gamecontroller')
+import express from 'express';
+import { router as user } from './controllers/usercontroller.js';
+import { router as game } from './controllers/gamecontroller.js';
+import { validate } from './middleware/validate-session.js';
+const app = express();
+const PORT = 4000;
 
-
-db.sync();
-app.use(require('body-parser'));
+app.use(express.json());
 app.use('/api/auth', user);
-app.use(require('./middleware/validate-session'))
+app.use(validate);
 app.use('/api/game', game);
-app.listen(function() {
-    console.log("App is listening on 4000");
-})
+
+app.listen(PORT, function () {
+    console.log(`App is listening on ${PORT}`);
+});
