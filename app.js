@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const db = require('./db').sequelize;
-const user = require('./controllers/usercontroller');
-const game = require('./controllers/gamecontroller');
-const validate = require('./middleware/validate-session');
+import { sequelize as db } from './db.js';
+import { router as user } from './controllers/usercontroller.js';
+import { router as game } from './controllers/gamecontroller.js';
+import { validate } from './middleware/validate-session.js';
 const PORT = 4000;
 
 db.sync();

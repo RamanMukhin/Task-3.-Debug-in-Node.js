@@ -17,5 +17,6 @@
   },
   "devDependencies": {
     "nodemon": "^1.18.5"
-  }
+  },
+  "type": "module"
 }

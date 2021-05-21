@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+export function userModel(sequelize, DataTypes) {
     return sequelize.define('user', {
         full_name: {
             type: DataTypes.STRING,

@@ -1,5 +1,6 @@
-const router = require('express').Router();
-const { Game } = require('../db');
+import express from 'express';
+import { Game } from '../db.js';
+const router = express.Router();
 
 router.get('/all', (req, res) => {
     Game.findAll({ where: { owner_id: req.user.id } })
@@ -113,4 +114,4 @@ router.delete('/remove/:id', (req, res) => {
         );
 });
 
-module.exports = router;
+export { router };

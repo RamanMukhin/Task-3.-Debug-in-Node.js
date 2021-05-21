@@ -1,8 +1,10 @@
-const router = require('express').Router();
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import express from 'express';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { User } from '../db.js';
 
-const { User } = require('../db');
+const router = express.Router();
+
 
 router.post('/signup', (req, res) => {
     User.findOne({ where: { username: req.body.user.username } }).then(user => {
@@ -23,13 +25,13 @@ router.post('/signup', (req, res) => {
                             token: token
                         });
                     },
-        
+
                     function signupFail(err) {
                         res.status(500).send(err.message);
                     }
                 );
         }
-    });   
+    });
 });
 
 router.post('/signin', (req, res) => {
@@ -54,4 +56,4 @@ router.post('/signin', (req, res) => {
     });
 });
 
-module.exports = router;
+export { router };
