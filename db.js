@@ -1,13 +1,13 @@
-var userModel = require('./models/user');
-var gameModel = require('./models/game');
-
+const userModel = require('./models/user');
+const gameModel = require('./models/game');
 const Sequelize = require('sequelize');
 //database username   password
 const sequelize = new Sequelize('gamedb', 'postgres', 'ghastb0i', {
     host: 'localhost',
     dialect: 'postgres',
-    port: 5433
-})
+    port: 5433,
+    operatorsAliases: false
+});
 
 sequelize.authenticate().then(
     function success() {
@@ -17,9 +17,9 @@ sequelize.authenticate().then(
     function fail(err) {
         console.log(`Error: ${err}`);
     }
-)
+);
 
-var User = userModel(sequelize, Sequelize.DataTypes);
-var Game = gameModel(sequelize, Sequelize.DataTypes);
+const User = userModel(sequelize, Sequelize.DataTypes);
+const Game = gameModel(sequelize, Sequelize.DataTypes);
 
 module.exports = { sequelize, User, Game };
