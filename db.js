@@ -2,11 +2,9 @@ import { userModel } from './models/user.js';
 import { gameModel } from './models/game.js';
 import Sequelize from 'sequelize';
                                 //database username   password
-const sequelize = new Sequelize('gamedb', 'postgres', 'ghastb0i', {
-    host: 'localhost',
-    dialect: 'postgres',
-    port: 5433,
-    operatorsAliases: false
+const sequelize = new Sequelize('BASA', 'ROMA', 'QWER', {
+    host: 'db',
+    dialect: 'postgres'
 });
 
 (async () => {

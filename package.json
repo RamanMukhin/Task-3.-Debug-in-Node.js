@@ -4,7 +4,8 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "docker": "docker run --rm -e POSTGRES_USER=process.env.POSTGRES_USER -e POSTGRES_PASSWORD=process.env.POSTGRES_PASSWORD -e POSTGRES_DB=process.env.POSTGRES_DB -p 5432:5432 myimage"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
