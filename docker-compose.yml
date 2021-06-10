@@ -1,8 +1,8 @@
-version: '3'
+version: '3.9'
 services: 
   db:
     # build: ./db/
-    image: postgres:13.3-alpine
+    image: postgres
     restart: always
     ports: 
       - ${DB_PORT}:${DB_PORT}
@@ -10,8 +10,10 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}  
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
-    # healthcheck:
-    #   test: "exit 0"
+    healthcheck:
+      test: "exit 0"
+    volumes: 
+      - my_docker_volume:/var/lib/mydb 
 
   app:
     build: ./
@@ -19,12 +21,17 @@ services:
     ports: 
       - ${PORT}:${PORT}
     depends_on: 
-      - 'db'
-      # db:
-      #   condition: service_healthy
+      db:
+        condition: service_healthy
     environment: 
         - PORT=4000
-
+    volumes: 
+      - B:\Р.А. Мухин Node_js\T.3\Task-3.-Debug-in-Node.js\db.js:/usr/app
+          # - my_docker_volume:/usr/app 
+        
+    
+volumes: 
+  my_docker_volume:
 
 
 
